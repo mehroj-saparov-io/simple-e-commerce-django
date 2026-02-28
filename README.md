@@ -100,4 +100,4 @@ http://127.0.0.1:8000/
 
 ## 👤 Muallif
 
-* Mehroj Saparov (Mehroj Saparov)
+* Mehroj Saparov
