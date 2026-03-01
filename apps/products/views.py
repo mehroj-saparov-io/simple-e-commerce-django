@@ -6,7 +6,7 @@ from .models import Product
 
 
 def home(request):
-    featured_products = Product.objects.order_by('-id')[:6]  # oxirgi 6 ta product
+    featured_products = Product.objects.order_by('-id')[:8]  # oxirgi 6 ta product
     context = {
         'featured_products': featured_products,
     }
@@ -44,7 +44,7 @@ def product_list(request):
         pass
 
     # 📄 PAGINATION
-    paginator = Paginator(products, 10)
+    paginator = Paginator(products, 8)  # 8 ta product sahifada
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

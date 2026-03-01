@@ -2,13 +2,15 @@
 
 {% block content %}
 <div class="max-w-4xl mx-auto px-4 py-8">
-    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Checkout</h2>
+
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center md:text-left">Checkout</h2>
 
     {% if cart_items %}
-    <form method="post" class="bg-white p-6 rounded-lg shadow-md">
+    <form method="post" class="bg-white p-6 rounded-lg shadow-md space-y-6">
         {% csrf_token %}
 
-        <div class="overflow-x-auto mb-6">
+        <!-- Cart Table -->
+        <div class="overflow-x-auto">
             <table class="min-w-full bg-white rounded-lg">
                 <thead>
                     <tr class="bg-gray-100 text-gray-700">
@@ -19,13 +21,13 @@
                 </thead>
                 <tbody>
                     {% for item in cart_items %}
-                    <tr class="border-b last:border-none">
+                    <tr class="border-b last:border-none hover:bg-gray-50 transition">
                         <td class="py-3 px-4">{{ item.product.name }}</td>
                         <td class="py-3 px-4">{{ item.quantity }}</td>
                         <td class="py-3 px-4 font-semibold">${{ item.subtotal }}</td>
                     </tr>
                     {% endfor %}
-                    <tr class="font-bold bg-gray-50">
+                    <tr class="font-bold bg-gray-50 text-lg">
                         <td colspan="2" class="py-3 px-4">Total:</td>
                         <td class="py-3 px-4">${{ total }}</td>
                     </tr>
@@ -33,18 +35,28 @@
             </table>
         </div>
 
-        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition">
-            Place Order
-        </button>
+        <!-- Place Order Button -->
+        <div class="text-center md:text-left">
+            <button type="submit"
+                    class="bg-green-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-green-700 transition">
+                Place Order
+            </button>
+        </div>
     </form>
 
-    <div class="mt-4">
+    <!-- Back Link -->
+    <div class="mt-4 text-center md:text-left">
         <a href="{% url 'cart_detail' %}" class="text-indigo-600 hover:underline">&larr; Back to Cart</a>
     </div>
 
     {% else %}
-    <p class="text-gray-500">Your cart is empty.</p>
-    <a href="{% url 'product_list' %}" class="text-indigo-600 hover:underline">&larr; Continue Shopping</a>
+    <div class="text-center py-12">
+        <p class="text-gray-500 mb-4">Your cart is empty.</p>
+        <a href="{% url 'product_list' %}" class="text-indigo-600 hover:underline font-medium">
+            &larr; Continue Shopping
+        </a>
+    </div>
     {% endif %}
+
 </div>
 {% endblock %}

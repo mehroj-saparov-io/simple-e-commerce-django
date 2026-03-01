@@ -1,19 +1,93 @@
 {% extends "base.html" %}
+
 {% block content %}
-<div class="max-w-md mx-auto px-4 py-12">
-    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">Login</h2>
 
-    <form method="post" class="bg-white p-6 rounded-lg shadow-md space-y-4">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition">
+<style>
+/* 🔥 faqat shu page uchun input styling */
+.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 14px;
+    background-color: #eef2ff;   /* indigo-50 */
+    border: 1px solid #c7d2fe;   /* indigo-200 */
+    color: #111827;              /* TEXT KO‘RINADI */
+    font-size: 15px;
+}
+
+.form-input::placeholder {
+    color: #6366f1;
+}
+
+.form-input:focus {
+    outline: none;
+    background-color: #ffffff;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,.25);
+}
+</style>
+
+<div class="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+
+        <h2 class="text-3xl font-bold text-gray-800 text-center mb-6">
             Login
-        </button>
-    </form>
+        </h2>
 
-    <p class="mt-4 text-center text-gray-700">
-        Don't have an account? 
-        <a href="{% url 'register' %}" class="text-indigo-600 hover:underline">Register here</a>.
-    </p>
+        <form method="post" class="space-y-5">
+            {% csrf_token %}
+
+            <!-- Username -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Username
+                </label>
+                <input
+                    type="text"
+                    name="username"
+                    class="form-input"
+                    placeholder="Enter username"
+                    required
+                >
+            </div>
+
+            <!-- Password -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Password
+                </label>
+                <input
+                    type="password"
+                    name="password"
+                    class="form-input"
+                    placeholder="Enter password"
+                    required
+                >
+            </div>
+
+            <!-- Errors -->
+            {% if form.errors %}
+            <div class="text-sm text-red-600 bg-red-50 p-3 rounded-lg">
+                Invalid username or password
+            </div>
+            {% endif %}
+
+            <button
+                type="submit"
+                class="w-full bg-indigo-600 text-white py-3 rounded-xl font-semibold
+                       hover:bg-indigo-700 transition duration-200"
+            >
+                Login
+            </button>
+        </form>
+
+        <p class="mt-6 text-center text-sm text-gray-600">
+            Don't have an account?
+            <a href="{% url 'register' %}" class="text-indigo-600 font-medium hover:underline">
+                Register
+            </a>
+        </p>
+
+    </div>
 </div>
+
 {% endblock %}

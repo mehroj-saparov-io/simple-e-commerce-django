@@ -2,11 +2,24 @@
 
 {% block content %}
 <div class="max-w-3xl mx-auto px-4 py-12 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold text-green-600 mb-4">Order #{{ order.id }} Placed Successfully!</h2>
-    <p class="text-gray-700 text-lg mb-2"><strong>Total:</strong> ${{ order.total_price }}</p>
-    <p class="text-gray-700 text-lg mb-6">Thank you, {{ order.user.username }}!</p>
-    <a href="{% url 'product_list' %}" class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition">
+
+    <!-- Success Message -->
+    <h2 class="text-3xl md:text-4xl font-bold text-green-600 mb-4">
+        Order #{{ order.id }} Placed Successfully!
+    </h2>
+
+    <!-- Order Summary -->
+    <div class="text-gray-700 text-lg mb-6 space-y-2">
+        <p><strong>Total:</strong> ${{ order.total_price }}</p>
+        <p>Thank you, <strong>{{ order.user.username }}</strong>!</p>
+    </div>
+
+    <!-- Continue Shopping Button -->
+    <a href="{% url 'product_list' %}" 
+       class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold 
+              hover:bg-indigo-700 transition duration-200">
         &larr; Continue Shopping
     </a>
+
 </div>
 {% endblock %}
