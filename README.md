@@ -1,7 +1,12 @@
+
 # Simple E-Commerce Django
 
 Simple E-Commerce Django – bu Django va PostgreSQL asosida yaratilgan oddiy onlayn do‘kon loyihasi.  
 Loyihada foydalanuvchi ro‘yxatdan o‘tishi, login/logout, mahsulotlarni ko‘rishi, savatga qo‘shishi va buyurtma berishi mumkin.
+
+![YouTube Video Banner](https://github.com/mehroj-saparov-io/simple-e-commerce-django/blob/main/static/images/banner.png)
+
+🎥 YouTube video: [Simple E-Commerce Django – Loyihani ko‘rish](https://youtu.be/DYj0IBZnjoo?si=wDhfms7CWo6k-_KI)
 
 ## 🛠 Texnologiyalar
 - **Python 3.13**
@@ -61,7 +66,7 @@ venv\Scripts\activate     # Windows
 pip install -r requirements.txt
 ```
 
-4. PostgreSQL database
+4. PostgreSQL database yaratish
 
 5. Django migrations:
 
